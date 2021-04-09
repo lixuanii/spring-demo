@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="daoImpl" class="com.yunfan.dao.impl.UserDaoImpl"/>
+    <bean id="mysqlImpl" class="com.yunfan.dao.impl.UserMysqlDaoImpl"/>
+
+<!--    ref：引用spring容器中创建好的对象
+        value：具体的值，基本数据类型    -->
+    <bean id="mysql-UserServiceImpl" class="com.yunfan.service.impl.UserServiceImpl">
+        <!-- set注入 导入引用对象即可 -->
+        <property name="userDao" ref="mysqlImpl"/>
+    </bean>
+    <bean id="dao-UserServiceImpl" class="com.yunfan.service.impl.UserServiceImpl">
+        <!-- set注入 -->
+        <property name="userDao" ref="daoImpl"/>
+    </bean>
+
+
+    <bean id="user" class="com.yunfan.pojo.User">
+<!--            无参注入            -->
+<!--        <property name="name" value="无参注入"/>-->
+
+<!--        <constructor-arg index="0" value="1.有参注入 通过index下标赋值"/>-->
+
+<!--        <constructor-arg type="java.lang.String" value="2.有参注入 通过类型创建 不建议使用(因为当有两个string的时候就会报错)"/>-->
+
+        <constructor-arg name="name" value="3.有参注入 直接通过参数名来设置"/>
+    </bean>
+
+
+
+
+    </beans>
+
+
+

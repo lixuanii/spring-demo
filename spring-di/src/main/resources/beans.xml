@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.yunfan.pojo.Address">
+        <property name="address" value="深圳"/>
+    </bean>
+
+
+    <bean id="student" class="com.yunfan.pojo.Student">
+        <!--        普通注入        -->
+        <property name="name" value="小明"/>
+
+        <!--        bean注入 ref   -->
+        <property name="address" ref="address"/>
+
+        <!--        数组注入        -->
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+                <value>三国演义</value>
+            </array>
+        </property>
+
+        <!--        list        -->
+        <property name="hobby">
+            <list>
+                <value>干饭</value>
+                <value>摸鱼</value>
+                <value>睡觉</value>
+            </list>
+        </property>
+
+        <!--        map        -->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="123456789012345678"/>
+                <entry key="银行卡" value="6217002980105791110"/>
+            </map>
+        </property>
+
+        <!--        set        -->
+        <property name="games">
+            <set>
+                <value>吃鸡</value>
+                <value>开心消消乐</value>
+            </set>
+        </property>
+
+        <!--        null        -->
+        <property name="girlfriend">
+            <null/>
+        </property>
+
+        <!--        Properties  key:value      -->
+        <property name="info">
+            <props>
+                <prop key="学号">20210326</prop>
+                <prop key="性别">男</prop>
+                <prop key="年纪">15</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
